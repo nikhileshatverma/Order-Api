@@ -16,6 +16,9 @@ Base URL of Backend to hit: [https://orderapi.letsgrowease.workers.dev/api/v1/tr
 [Postman Collection Link](https://drive.google.com/file/d/1UxrIKPM2MqiSZdpoyZMhoGO_L6NNdnhp/view?usp=sharing)
 
 ```json
+
+Example Request Body of order creation :
+
 {
     "quantity": 111,
     "price": 3333,
@@ -36,7 +39,7 @@ Example Response Body of order creation :
 }
 
 
-Update Order Req Body :
+Update Order Request Body :
 {
   "updatedQuantity": 4110,
   "updatedPrice": 2320
@@ -70,6 +73,15 @@ Example Response Body of order Updation :
         }
 }
 
+Example Response Delete call :
+{
+    "success": true
+}
+
+If order not present :
+{
+    "message": "Order not found"
+}
 
 
 

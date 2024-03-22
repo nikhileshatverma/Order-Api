@@ -160,35 +160,40 @@ orderRouter.put('/:id', async (c) => {
   
   // Cancel order endpoint
   // This endpoint allows users to cancel an existing order.
-orderRouter.delete('/:orderId', async (c) => {
-    // Get the order ID from the request parameter
+  orderRouter.delete('/:orderId', async (c) => {
     const orderId = c.req.param("orderId");
-  
-    // Connect to the database
+
     const prisma = new PrismaClient({
-      datasourceUrl: c.env.DATABASE_URL,
+        datasourceUrl: c.env.DATABASE_URL,
     }).$extends(withAccelerate());
-  
+
     try {
-      // Delete the order from the database
-      await prisma.order.delete({
-        where: {
-          id: orderId,
-        },
-      });
-      // Return success message as the response
-      return c.json({
-        success: true,
-      });
+        // Delete related trade records first
+        await prisma.trade.deleteMany({
+            where: {
+                orderId: orderId,
+            },
+        });
+
+        // Then delete the order
+        await prisma.order.delete({
+            where: {
+                id: orderId,
+            },
+        });
+
+        return c.json({
+            success: true,
+        });
     } catch (e) {
-      // Handle server errors
-      c.status(500);
-      console.error('Error:', e);
-      return c.json({
-        message: 'Internal Server Error',
-      });
+        c.status(500);
+        console.error('Error:', e);
+        return c.json({
+            message: 'Internal Server Error',
+        });
     }
 });
+
   
   // Fetch order endpoint
   // This endpoint allows users to fetch details of a specific order by its ID.
@@ -254,25 +259,25 @@ orderRouter.get('/:orderId', async (c) => {
     }
   });
 
-  // Fetch all trades endpoint
-  orderRouter.get('/trades', async (c) => {
-    const prisma = new PrismaClient({
-      datasourceUrl: c.env.DATABASE_URL,
-    }).$extends(withAccelerate());
+  // // Fetch all trades endpoint
+  // orderRouter.get('/trades', async (c) => {
+  //   const prisma = new PrismaClient({
+  //     datasourceUrl: c.env.DATABASE_URL,
+  //   }).$extends(withAccelerate());
   
-    try {
-      const trades = await prisma.trade.findMany();
-      return c.json({
-        trades,
-      });
-    } catch (e) {
-      c.status(500);
-      console.error('Error:', e);
-      return c.json({
-        message: 'Internal Server Error',
-      });
-    }
-  });
+  //   try {
+  //     const trades = await prisma.trade.findMany();
+  //     return c.json({
+  //       trades,
+  //     });
+  //   } catch (e) {
+  //     c.status(500);
+  //     console.error('Error:', e);
+  //     return c.json({
+  //       message: 'Internal Server Error',
+  //     });
+  //   }
+  // });
   
   
   

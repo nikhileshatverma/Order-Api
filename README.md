@@ -4,17 +4,17 @@
 Base URL of Backend to hit: [https://orderapi.letsgrowease.workers.dev/api/v1/trades](https://orderapi.letsgrowease.workers.dev/api/v1/trades)
 
 ## Endpoints
-- [Get Orders](https://orderapi.letsgrowease.workers.dev/api/v1/order)
-- [Post Order](https://orderapi.letsgrowease.workers.dev/api/v1/order)
-- [Update Order](https://orderapi.letsgrowease.workers.dev/api/v1/order/{OrderId})
-- [Delete Order](https://orderapi.letsgrowease.workers.dev/api/v1/order/{OrderId})
-- [Get Orders by Id](https://orderapi.letsgrowease.workers.dev/api/v1/order/{OrderId})
-- [Get Trades](https://orderapi.letsgrowease.workers.dev/api/v1/trades)
+- Get Orders: [https://orderapi.letsgrowease.workers.dev/api/v1/order](https://orderapi.letsgrowease.workers.dev/api/v1/order)
+- Post Order: [https://orderapi.letsgrowease.workers.dev/api/v1/order](https://orderapi.letsgrowease.workers.dev/api/v1/order)
+- Update Order: [https://orderapi.letsgrowease.workers.dev/api/v1/order/{OrderId}](https://orderapi.letsgrowease.workers.dev/api/v1/order/{OrderId})
+- Delete Order: [https://orderapi.letsgrowease.workers.dev/api/v1/order/{OrderId}](https://orderapi.letsgrowease.workers.dev/api/v1/order/{OrderId})
+- Get Orders by Id: [https://orderapi.letsgrowease.workers.dev/api/v1/order/{OrderId}](https://orderapi.letsgrowease.workers.dev/api/v1/order/{OrderId})
+- Get Trades: [https://orderapi.letsgrowease.workers.dev/api/v1/trades](https://orderapi.letsgrowease.workers.dev/api/v1/trades)
+
 
 ## Postman Collection
 [Postman Collection Link](https://drive.google.com/file/d/1UxrIKPM2MqiSZdpoyZMhoGO_L6NNdnhp/view?usp=sharing)
 
-## Post Order Request Body Example
 ```json
 {
     "quantity": 111,
